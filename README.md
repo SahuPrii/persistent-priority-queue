@@ -157,10 +157,6 @@ database server to provision.
   the most urgent job (`extract_min` on a "deadline" priority).
 - **Bandwidth/QoS packet scheduling in networking** — routers prioritize
   packets (e.g. VoIP over bulk transfer) using priority queues.
-- **Graph algorithms** — Dijkstra's shortest path and Prim's MST both rely
-  on a priority queue that supports `extract_min` *and* `update` (decrease-
-  key) on the distance/weight of nodes already in the queue, exactly the
-  operations this implementation supports.
 - **Event-driven simulation** — a discrete-event simulator keeps all
   pending events in a priority queue ordered by timestamp, and needs to
   cancel/reschedule (`delete`/`update`) events as the simulation state
@@ -168,6 +164,6 @@ database server to provision.
 - **Load balancers / rate limiters** — routing requests to the
   least-loaded server first is an `extract_min` over live load scores that
   get `update`d as load changes.
-- **A\* / best-first search in games & pathfinding** — the open set is a
+- best-first search in games & pathfinding** — the open set is a
   priority queue ordered by estimated cost, with nodes' priorities
   frequently `update`d as cheaper paths to them are discovered.
